@@ -22,7 +22,6 @@ import static org.mockito.BDDMockito.given;
 @ExtendWith(MockitoExtension.class)
 public class AuthVerificationHandlerTest {
 
-
     @Mock
     private CustomerProfileRepository customerProfileRepositoryMock;
 
@@ -43,7 +42,6 @@ public class AuthVerificationHandlerTest {
                         customer);
         customerProfile.setBuyerList(List.of("buyer@mail.com"));
 
-
         POEmailRequest request = new POEmailRequest(UUID.randomUUID().toString(),
                 "buyer@mail.com",
                 "customer.po@mailbox.com",
@@ -53,6 +51,7 @@ public class AuthVerificationHandlerTest {
 
         WrapperTransaction txt =  new WrapperTransaction(request);
 
+        // dependcies, services mock
         given(customerProfileRepositoryMock.getCustomerProfileByPOMailbox(any()))
                 .willReturn(Optional.of(customerProfile));
 
@@ -95,13 +94,11 @@ public class AuthVerificationHandlerTest {
 
 
         //Act
-
         BuyerNotAllowedException exception = assertThrows(BuyerNotAllowedException.class,
                 () -> handler.handle(txt));
 
 
         //Assert
         assertThat(exception.getMessage()).contains("is not allowed");
-
     }
 }

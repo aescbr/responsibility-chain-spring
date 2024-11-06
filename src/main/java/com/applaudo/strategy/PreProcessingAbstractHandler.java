@@ -8,7 +8,7 @@ import com.applaudo.model.WrapperTransaction;
 import java.util.List;
 import java.util.Optional;
 
-public class PreProcessingAbstractHandler implements PreProcessingHandler {
+public abstract class PreProcessingAbstractHandler implements PreProcessingHandler {
 
     private Optional<PreProcessingHandler> next = Optional.empty();
 

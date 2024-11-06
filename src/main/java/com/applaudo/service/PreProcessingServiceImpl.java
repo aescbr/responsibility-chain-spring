@@ -29,11 +29,12 @@ public class PreProcessingServiceImpl implements PreProcessingService {
     public WrapperTransaction processRequest(WrapperTransaction txt) {
 
         authVerificationHandler.setNext(sourceRequestHandler);
+        sourceRequestHandler.setNext(fileExtensionValidationHandler);
 
         WrapperTransaction result = authVerificationHandler.handle(txt);
         System.out.println(result);
-        //send
 
+        //send to AIReadingService
         return result;
     }
 }

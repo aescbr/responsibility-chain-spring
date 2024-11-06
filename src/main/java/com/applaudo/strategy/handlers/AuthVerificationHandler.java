@@ -42,7 +42,7 @@ public class AuthVerificationHandler extends PreProcessingAbstractHandler {
                 throw new BuyerNotAllowedException("buyer: "+txt.getRequest().getBuyerEmail()+" is not allowed to send PO email requests");
             }
         }else {
-            throw new CustomerProfileNotFound("buyer: "+txt.getRequest().getPoMailbox()+" Not found in db");
+            throw new CustomerProfileNotFound("buyer: "+txt.getRequest().getPoMailbox()+" Not found in db"); //
         }
 
     }
